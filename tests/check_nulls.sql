@@ -1,0 +1,1 @@
+{{ check_nulls_in_cols(ref('src_listings')) }}

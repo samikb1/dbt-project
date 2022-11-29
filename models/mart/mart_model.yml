@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: stage
+    database: dbt_project
+    schema: stage
+    tables: 
+      - name: stg_hosts
+      - name: stg_listings
+      - name: stg_reviews

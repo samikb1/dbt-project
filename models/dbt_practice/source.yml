@@ -1,0 +1,14 @@
+version: 2
+
+sources:
+  - name: orders
+    database: RAW_EXTRACT
+    schema: UNIT_TEST
+    tables: 
+      - name: raw_orders
+      
+  - name: raw
+    database: RAW_EXTRACT
+    schema: UNIT_TEST
+    tables:
+      - name: stg_payments

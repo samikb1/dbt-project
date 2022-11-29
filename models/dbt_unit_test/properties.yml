@@ -1,0 +1,23 @@
+version: 2
+models:
+  - name: monthly_agg_sal
+    config:
+      schema: transformed
+      materialized: table
+  - name : input_test_data
+    config:
+      schema: output_test
+      materialized: table
+    tests:
+      - dbt_utils.equality:
+            compare_model: ref('expected_dataset')
+            compare_columns:
+              - month_name
+              - total_sal
+sources:
+  - name: RAW
+    database: RAW_EXTRACT
+    schema: PUBLIC
+
+    tables:
+      - name: RAW_EMP_INFO

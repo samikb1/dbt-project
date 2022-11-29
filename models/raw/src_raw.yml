@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: raw
+    database: dbt_project
+    schema: raw
+    tables: 
+      - name: hosts_raw
+      - name: listings_raw
+      - name: reviews_raw
