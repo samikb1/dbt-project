@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'samik_dbt_warehouse'
+name: 'dbt_practice'
 version: '1.0.0'
 config-version: 2
 
@@ -15,14 +15,14 @@ profile: 'samik_dbt_warehouse'
 model-paths: ["models"]
 analysis-paths: ["analyses"]
 test-paths: ["tests"]
-seed-paths: ["seeds"]
+seed-paths: ["seeds/datasets"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
-  - "dbt_packages"
+  #- "dbt_packages"
 
 
 # Configuring models
@@ -53,10 +53,10 @@ models:
        materialized: table
        database: RAW_EXTRACT
        schema: TARGET_SCHEMA
+
 seeds:
-  samik_dbt_warehouse:
-    monthly_report_testing:
-      schema: unit_test   
+  #samik_dbt_warehouse:
+      +schema: raw   
 
 snapshots:
   samik_dbt_warehouse:
@@ -65,6 +65,7 @@ snapshots:
     +unique_key: listing_id
     +strategy: timestamp
     +updated_at: updated_at
+    
 vars:
   'dbt_date:time_zone': 'UTC'
   'date' : '2022-11-28'
