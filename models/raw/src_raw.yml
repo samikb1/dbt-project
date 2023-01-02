@@ -2,9 +2,21 @@ version: 2
 
 sources:
   - name: raw
-    database: dbt_project
+    database: RAW_EXTRACT
     schema: raw
     tables: 
-      - name: hosts_raw
-      - name: listings_raw
-      - name: reviews_raw
+      - name: DEPT_EMP
+        columns:
+          - name: emp_no
+            description: "not null primary key column"
+            tests:
+              - not_null
+
+  - name: dep_history
+    database: RAW_EXTRACT
+    schema: RAW
+    tables:
+      - name: DEPT_EMP_HISTORY
+        freshness:
+          warn_after: {count: 4 ,period : 1}
+          error_after: {count: 4 ,period : 1}
