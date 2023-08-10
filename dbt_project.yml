@@ -22,7 +22,7 @@ snapshot-paths: ["snapshots"]
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
   - "target"
-  #- "dbt_packages"
+  - "dbt_packages"
 
 
 # Configuring models
@@ -32,27 +32,25 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  samik_dbt_warehouse:
     # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
-    raw:
-       materialized: table
-       +database: dbt_project
-       +schema: raw
-    stage:
-       materialized: table
-       +database: dbt_project
-       +schema: stage
-       +enabled: false
-    mart:
-       +database: dbt_project
-       +schema: tgt
-       +enabled: false
-    dbt_practice:
-       materialized: table
-       database: RAW_EXTRACT
-       schema: TARGET_SCHEMA
+  example:
+    +materialized: view
+  raw:
+      +materialized: table
+      +database: dbt_project
+      +schema: raw
+  stage:
+      +materialized: table
+      +database: raw_extract
+      +schema: stage
+  mart:
+      +database: dbt_project
+      +schema: tgt
+      +enabled: false
+  dbt_practice:
+      +materialized: table
+      +database: RAW_EXTRACT
+      +schema: TARGET_SCHEMA
 
 seeds:
   #samik_dbt_warehouse:

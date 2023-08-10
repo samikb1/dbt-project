@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: stg_salaries
+    config:
+      database: RAW_EXTRACT
+      schema: STAGE
+    columns: 
+      - name: salary
+        tests: 
+          - salaries_is_positive
+  - name: stg_employees
+    config:
+      database: RAW_EXTRACT
+      schema: STAGE
+
+  - name: stg_salaries_detailed
+    config:
+      database: RAW_EXTRACT
+      schema: STAGE
+    columns:
+      - name: net_salary
+        tests: 
+          - salaries_is_positive
+      - name: gross_salary
+        tests:
+          - salaries_is_positive:
+                config:
+                  severity: warn
+                  error_if: "<2"
+                  warn_if: "<1"
+                  store_failures : true
+      - name: emp_no
+        tests:
+          #- unique
+          - unique:
+              config:
+                fail_calc: "sum(n_records)"
+                #store_failures: false
+

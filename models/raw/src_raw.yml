@@ -1,22 +1,12 @@
 version: 2
 
 sources:
-  - name: raw
-    database: RAW_EXTRACT
-    schema: raw
-    tables: 
-      - name: DEPT_EMP
-        columns:
-          - name: emp_no
-            description: "not null primary key column"
-            tests:
-              - not_null
-
   - name: dep_history
     database: RAW_EXTRACT
     schema: RAW
     tables:
-      - name: DEPT_EMP_HISTORY
+      - name: DEPT_COPY
         freshness:
-          warn_after: {count: 4 ,period : 1}
-          error_after: {count: 4 ,period : 1}
+          warn_after: {count: 2 ,period : day}
+          error_after: {count: 3 ,period : day}
+        loaded_at_field: loaded_at

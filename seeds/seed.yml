@@ -3,4 +3,4 @@ version: 2
 seeds:
   - name: seed_1
     config:
-      schema: TARGET_SCHEMA
+      schema: RAW
