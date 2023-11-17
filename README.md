@@ -1,8 +1,9 @@
 Welcome to your new dbt project!
 
 ### Using the starter project
+## Samik 
 
-Try running the following commands:
+####Try running the following commands:
 - dbt run
 - dbt test
 - dbt compile
