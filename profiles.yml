@@ -1,13 +1,13 @@
 samik_dbt_warehouse:
   outputs:
     dev:
-      account: pn67968.west-us-2.azure
-      database: RAW_EXTRACT
-      password: Argentina@2022
-      role: Accountadmin
+      account: yw21262.us-east-2.aws
+      database: TEST_SNOWFLAKE
+      password: Messi@2022
+      role: USER2
       schema: PUBLIC
       threads: 2
       type: snowflake
-      user: samba
-      warehouse: COMPUTE_WH
+      user: bhattacha2
+      warehouse: DBT_WH
   target: dev

@@ -53,8 +53,7 @@ models:
       +schema: TARGET_SCHEMA
 
 seeds:
-  #samik_dbt_warehouse:
-      +schema: raw   
+  +schema: LANDING   
 
 snapshots:
   samik_dbt_warehouse:
@@ -63,7 +62,9 @@ snapshots:
     +unique_key: listing_id
     +strategy: timestamp
     +updated_at: updated_at
-    
+
 vars:
-  'dbt_date:time_zone': 'UTC'
-  'date' : '2022-11-28'
+  use_common_masking_policy_db: "True"
+  common_masking_policy_db: "TEST_POC"
+  common_masking_policy_schema: "MASKING"
+  create_masking_policy_schema: "True"

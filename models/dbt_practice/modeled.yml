@@ -1,7 +1,0 @@
-version: 2
-
-models:
-  - name: STG_PAYMENTS_AGG
-    config:
-      database: "{{ target.name| upper }}"
-      schema: TARGET_SCHEMA
